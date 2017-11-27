@@ -99,8 +99,8 @@ class MoodListener(StreamListener):
 	now_time = datetime.now()
 	print now_time 
 	tdelta = now_time - self.interval_time
-	print tdelta.minutes
-	if tdelta.minutes >= 10:
+	print tdelta.seconds
+	if tdelta.seconds >= 600:
 		self.checker.reset_emotion_index()
 		self.interval_time = now_time
 
