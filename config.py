@@ -23,7 +23,7 @@ MOOD_COLORS = {
 LED_COLORS = {
   'white': 0xFFFFFF,
   'red': 0xFF0000,
-  'pink': 0xED1556,
+  'pink': 0xff0520,
   'orange': 0xFF3001,
   'yellow': 0xFF5000,
   'green': 0x00FF00,
