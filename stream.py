@@ -16,6 +16,8 @@ from config import MOOD_FOLDER
 from config import LED_PINS
 from config import LED_COLORS
 
+from datetime import datetime, time
+
 def setInterval(interval):
     def decorator(function):
         def wrapper(*args, **kwargs):
@@ -78,14 +80,26 @@ class MoodChecker(object):
         print winning_key + " => " + color
         self.ledcontroller.led_show_rgb(LED_COLORS[color])
 
-
+    def reset_emotion_index(self):
+	print "Resetting emotion index..."
+	for mood_name in MOOD_COLORS:
+            self.emotion_index[mood_name] = 0
+            
 
 class MoodListener(StreamListener):
     def load_word_list(self, ledcontroller):
         self.checker = MoodChecker(ledcontroller)
+	self.interval_time = datetime.now()
 
     def sample(self):
         self.checker.show_current_emotion()
+	now_time = datetime.now()
+	print now_time 
+	tdelta = now_time - self.interval_time
+	print tdelta.seconds
+	if tdelta.seconds >= 120:
+		self.checker.reset_emotion_index()
+		self.interval_time = now_time
 
     def stop_sampling(self):
         self.sample_timer.cancel()
