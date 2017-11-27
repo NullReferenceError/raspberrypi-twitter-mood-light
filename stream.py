@@ -4,6 +4,7 @@ import re
 import json
 import threading
 import RPi.GPIO as GPIO
+import random
 
 from tweepy.streaming import StreamListener
 from tweepy import OAuthHandler
@@ -73,6 +74,7 @@ class MoodChecker(object):
 
     def show_current_emotion(self):
         print self.emotion_index
+	random.shuffle(self.emotion_index)
         winning_key = max(self.emotion_index, key=self.emotion_index.get)
         color = MOOD_COLORS[winning_key]
         print winning_key + " => " + color
