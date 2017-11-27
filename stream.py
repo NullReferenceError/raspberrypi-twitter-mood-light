@@ -76,9 +76,9 @@ class MoodChecker(object):
 
     def show_current_emotion(self):
         print self.emotion_index
-	current_max_val = max(self.emotion_index, key=self.emotion_index.get)
-	winning_key = random.choice([k for (k, v) in self.emotion_index.items() if v == mv])
-        #winning_key = max(self.emotion_index, key=self.emotion_index.get)
+	current_max_val = max(self.emotion_index.values())
+	#print current_max_val
+	winning_key = random.choice([k for (k, v) in self.emotion_index.items() if v == current_max_val])
         color = MOOD_COLORS[winning_key]
         print winning_key + " => " + color
         self.ledcontroller.led_show_rgb(LED_COLORS[color])
@@ -99,8 +99,8 @@ class MoodListener(StreamListener):
 	now_time = datetime.now()
 	print now_time 
 	tdelta = now_time - self.interval_time
-	print tdelta.seconds
-	if tdelta.seconds >= 120:
+	print tdelta.minutes
+	if tdelta.minutes >= 10:
 		self.checker.reset_emotion_index()
 		self.interval_time = now_time
 
