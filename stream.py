@@ -55,15 +55,16 @@ class MoodChecker(object):
     def match_phrase(self, tweet_text):
         for emotion, pattern in self.match_phrases:
             if pattern.match(tweet_text):
-                # print emotion
-                # print pattern
-                # print tweet_text
+                print "Emotion: " + emotion
+		#print "Pattern: "
+                #print pattern
+                print "Text: " + tweet_text
                 self.stack_emotion(emotion)
 
 
     def stack_emotion(self, emotion):
         self.emotion_stack.append(emotion)
-        # print self.emotion_stack
+        #print self.emotion_stack
         self.emotion_index[emotion] = self.emotion_index[emotion] + 1
 
         if MOOD_LIMIT < len(self.emotion_stack):
@@ -71,7 +72,7 @@ class MoodChecker(object):
             self.emotion_index[oldest_emotion] = self.emotion_index[oldest_emotion] - 1
 
     def show_current_emotion(self):
-        # print self.emotion_index
+        print self.emotion_index
         winning_key = max(self.emotion_index, key=self.emotion_index.get)
         color = MOOD_COLORS[winning_key]
         print winning_key + " => " + color

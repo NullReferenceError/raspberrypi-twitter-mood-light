@@ -15,22 +15,22 @@ MOOD_COLORS = {
   'anger': 'red',
   'joy': 'yellow',
   'love': 'pink',
-  'fear': 'white',
-  'envy': 'green',
-  'surprise': 'orange',
-  'sadness': 'blue'
+  'fear': 'green',
+  'surprise': 'lightblue',
+  'sadness': 'darkblue'
 }
 
 LED_COLORS = {
-  'white': 0xFF2020,
+  'white': 0xFFFFFF,
   'red': 0xFF0000,
-  'pink': 0xFF0120,
-  'orange': 0xFF0800,
-  'yellow': 0xFF3001,
-  'green': 0x002000,
-  'blue': 0x0000FF,
+  'pink': 0xED1556,
+  'orange': 0xFF3001,
+  'yellow': 0xFF5000,
+  'green': 0x00FF00,
+  'darkblue': 0x1622FF,
   'magenta': 0xFF00EE,
-  'black': 0x000000
+  'black': 0x000000,
+  'lightblue': 0x00FFFF
 }
 
 # http://www.hobbytronics.co.uk/image/data/tutorial/raspberry-pi/gpio-pinout.jpg
