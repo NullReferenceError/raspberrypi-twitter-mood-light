@@ -4,6 +4,6 @@ python:
 before_install:
 install:
   -  pip3 install tweepy
-  -  pip3 install rpi.gpio
+  -  pip install RPi.GPIO
 script:
   -  test/rgb-led-test.py
