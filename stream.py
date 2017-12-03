@@ -61,7 +61,7 @@ class MoodChecker(object):
                 print "Emotion: " + emotion
 		#print "Pattern: "
                 #print pattern
-                print "Text: " + tweet_text
+                #print "Text: " + tweet_text
                 self.stack_emotion(emotion)
 
 
@@ -184,3 +184,8 @@ if __name__ == '__main__':
         print '\n! Received keyboard interrupt, quitting threads.\n'
         output_interval.set()
         GPIO.cleanup()
+
+    except Exception, e:
+	print("Unexpected error!!!",e)
+	output_interval.set()
+	GPIO.cleanup()
