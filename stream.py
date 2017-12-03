@@ -108,13 +108,15 @@ class MoodListener(StreamListener):
         self.sample_timer.cancel()
 
     def on_data(self, data):
-        tweet = json.loads(data)
-        tweet_text = tweet.get('text')
-        # print tweet_text
-        if None != tweet_text and '' != tweet_text:
-            self.checker.match_phrase(tweet_text)
-        return True
-
+        try:
+		tweet = json.loads(data)
+        	tweet_text = tweet.get('text')
+        	# print tweet_text
+        	if None != tweet_text and '' != tweet_text:
+        	    self.checker.match_phrase(tweet_text)
+        	return True
+	except:
+		raise;
     def on_error(self, status):
         print status
 
@@ -178,8 +180,7 @@ if __name__ == '__main__':
         stream = Stream(auth, listener)
         # stream.filter(track=['basketball'])
         # stream.sample(async=True)
-        stream.sample()
-
+        stream.sample()   
     except (KeyboardInterrupt, SystemExit):
         print '\n! Received keyboard interrupt, quitting threads.\n'
         output_interval.set()

@@ -1,5 +1,5 @@
 [Unit]
-Description=Start moodlight
+Description=Twitter Moodlight Service
 After=network-online.target
 Requires=network-online.target
 
@@ -10,9 +10,7 @@ GuessMainPID=no
 StandardInput=null
 WorkingDirectory=/home/pi/raspberrypi-twitter-mood-light/
 ExecStart=/usr/bin/python /home/pi/raspberrypi-twitter-mood-light/stream.py
-StandardOutput=syslog
-StandardError=syslog
-Restart=on-failure
+Restart=always
 RestartSec=3
 
 [Install]
