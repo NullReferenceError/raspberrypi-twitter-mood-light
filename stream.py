@@ -58,7 +58,7 @@ class MoodChecker(object):
     def match_phrase(self, tweet_text):
         for emotion, pattern in self.match_phrases:
             if pattern.match(tweet_text):
-                print "Emotion: " + emotion
+                #print "Emotion: " + emotion
 		#print "Pattern: "
                 #print pattern
                 #print "Text: " + tweet_text
@@ -75,7 +75,7 @@ class MoodChecker(object):
             self.emotion_index[oldest_emotion] = self.emotion_index[oldest_emotion] - 1
 
     def show_current_emotion(self):
-        print self.emotion_index
+        #print self.emotion_index
 	current_max_val = max(self.emotion_index.values())
 	#print current_max_val
 	winning_key = random.choice([k for (k, v) in self.emotion_index.items() if v == current_max_val])
@@ -97,9 +97,9 @@ class MoodListener(StreamListener):
     def sample(self):
         self.checker.show_current_emotion()
 	now_time = datetime.now()
-	print now_time 
+	#print now_time 
 	tdelta = now_time - self.interval_time
-	print tdelta.seconds
+	#print tdelta.seconds
 	if tdelta.seconds >= 600:
 		self.checker.reset_emotion_index()
 		self.interval_time = now_time
@@ -111,7 +111,7 @@ class MoodListener(StreamListener):
         try:
 		tweet = json.loads(data)
         	tweet_text = tweet.get('text')
-        	# print tweet_text
+        	#print tweet_text
         	if None != tweet_text and '' != tweet_text:
         	    self.checker.match_phrase(tweet_text)
         	return True
